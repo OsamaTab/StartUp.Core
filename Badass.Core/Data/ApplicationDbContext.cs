@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Badass.Core.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,5 +13,8 @@ namespace Badass.Core.Data
             : base(options)
         {
         }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<PostType> PostTypes { get; set; }
+
     }
 }
