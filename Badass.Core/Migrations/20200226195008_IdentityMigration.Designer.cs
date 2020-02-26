@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Badass.Core.Data.Migrations
+namespace Badass.Core.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200225223837_first")]
-    partial class first
+    [Migration("20200226195008_IdentityMigration")]
+    partial class IdentityMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

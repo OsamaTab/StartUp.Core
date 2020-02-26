@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Badass.Core.Data.Migrations
+namespace Badass.Core.Migrations
 {
-    public partial class adding_posts : Migration
+    public partial class Posts : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -40,19 +40,6 @@ namespace Badass.Core.Data.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "PostTypes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PostTypes", x => x.Id);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_Posts_CreatedById",
                 table: "Posts",
@@ -68,9 +55,6 @@ namespace Badass.Core.Data.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Posts");
-
-            migrationBuilder.DropTable(
-                name: "PostTypes");
         }
     }
 }

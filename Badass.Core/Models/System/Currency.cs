@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Badass.Core.Models.System
+{
+    public class Currency
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+    }
+}
