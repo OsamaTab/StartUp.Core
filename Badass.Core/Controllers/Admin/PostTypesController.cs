@@ -11,8 +11,7 @@ using Badass.Core.Models;
 namespace Badass.Core.Controllers.Admin
 {
     
-    [Route("admin/{controller}/{action=Index}/{id?}")]
-    public class PostTypesController : Controller
+    public class PostTypesController : BaseController
     {
         private readonly ApplicationDbContext _context;
 
