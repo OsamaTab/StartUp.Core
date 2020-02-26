@@ -10,7 +10,7 @@ using Badass.Core.Models;
 
 namespace Badass.Core.Controllers.Admin
 {
-    
+
     public class PostTypesController : BaseController
     {
         private readonly ApplicationDbContext _context;
@@ -21,10 +21,10 @@ namespace Badass.Core.Controllers.Admin
         }
 
         // GET: PostTypes
-    
+
         public async Task<IActionResult> Index()
         {
-            return View(await _context.PostTypes.ToListAsync());
+            return View("../Admin/PostTypes/Index", await _context.PostTypes.ToListAsync());
         }
 
         // GET: PostTypes/Details/5
@@ -42,13 +42,13 @@ namespace Badass.Core.Controllers.Admin
                 return NotFound();
             }
 
-            return View(postType);
+            return View("../Admin/PostTypes/Details", postType);
         }
 
         // GET: PostTypes/Create
         public IActionResult Create()
         {
-            return View();
+            return View("../Admin/PostTypes/Create");
         }
 
         // POST: PostTypes/Create
@@ -64,7 +64,7 @@ namespace Badass.Core.Controllers.Admin
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(postType);
+            return View("../Admin/PostTypes/index", postType);
         }
 
         // GET: PostTypes/Edit/5
@@ -80,7 +80,7 @@ namespace Badass.Core.Controllers.Admin
             {
                 return NotFound();
             }
-            return View(postType);
+            return View("../Admin/PostTypes/Edit", postType);
         }
 
         // POST: PostTypes/Edit/5
@@ -115,7 +115,7 @@ namespace Badass.Core.Controllers.Admin
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(postType);
+            return View("../Admin/PostTypes/index", postType);
         }
 
         // GET: PostTypes/Delete/5
@@ -133,7 +133,7 @@ namespace Badass.Core.Controllers.Admin
                 return NotFound();
             }
 
-            return View(postType);
+            return View("../Admin/PostTypes/Delete", postType);
         }
 
         // POST: PostTypes/Delete/5
