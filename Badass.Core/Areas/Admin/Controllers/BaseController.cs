@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Badass.Core.Controllers.Admin
+namespace Badass.Core.Areas.Admin
 {
-    [Route("admin/{controller}/{action=Index}/{id?}")]
+    [Area("Admin")]
+    //[Authorize]
     public class BaseController : Controller
     {
-       
     }
 }

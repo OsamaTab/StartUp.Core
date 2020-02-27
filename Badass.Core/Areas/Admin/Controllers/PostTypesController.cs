@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using Badass.Core.Data;
 using Badass.Core.Models;
 
-namespace Badass.Core.Controllers.Admin
+namespace Badass.Core.Areas.Admin
 {
-
+    
     public class PostTypesController : BaseController
     {
         private readonly ApplicationDbContext _context;
@@ -20,14 +20,13 @@ namespace Badass.Core.Controllers.Admin
             _context = context;
         }
 
-        // GET: PostTypes
-
+        // GET: Admin/PostTypes
         public async Task<IActionResult> Index()
         {
-            return View("../Admin/PostTypes/Index", await _context.PostTypes.ToListAsync());
+            return View(await _context.PostTypes.ToListAsync());
         }
 
-        // GET: PostTypes/Details/5
+        // GET: Admin/PostTypes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -42,16 +41,16 @@ namespace Badass.Core.Controllers.Admin
                 return NotFound();
             }
 
-            return View("../Admin/PostTypes/Details", postType);
+            return View(postType);
         }
 
-        // GET: PostTypes/Create
+        // GET: Admin/PostTypes/Create
         public IActionResult Create()
         {
-            return View("../Admin/PostTypes/Create");
+            return View();
         }
 
-        // POST: PostTypes/Create
+        // POST: Admin/PostTypes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -64,10 +63,10 @@ namespace Badass.Core.Controllers.Admin
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View("../Admin/PostTypes/index", postType);
+            return View(postType);
         }
 
-        // GET: PostTypes/Edit/5
+        // GET: Admin/PostTypes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -80,10 +79,10 @@ namespace Badass.Core.Controllers.Admin
             {
                 return NotFound();
             }
-            return View("../Admin/PostTypes/Edit", postType);
+            return View(postType);
         }
 
-        // POST: PostTypes/Edit/5
+        // POST: Admin/PostTypes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -115,10 +114,10 @@ namespace Badass.Core.Controllers.Admin
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View("../Admin/PostTypes/index", postType);
+            return View(postType);
         }
 
-        // GET: PostTypes/Delete/5
+        // GET: Admin/PostTypes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -133,10 +132,10 @@ namespace Badass.Core.Controllers.Admin
                 return NotFound();
             }
 
-            return View("../Admin/PostTypes/Delete", postType);
+            return View(postType);
         }
 
-        // POST: PostTypes/Delete/5
+        // POST: Admin/PostTypes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
