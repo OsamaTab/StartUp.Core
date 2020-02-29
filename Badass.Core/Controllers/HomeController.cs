@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Badass.Core.Models;
 using Badass.Core.Data;
+using Microsoft.EntityFrameworkCore;
+using Badass.Core.ViewModels;
 
 namespace Badass.Core.Controllers
 {
@@ -21,9 +23,15 @@ namespace Badass.Core.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var posts = _context.Posts.Include(p => p.CreatedBy).Include(p => p.PostType).Include(p => p.UpdatedBy);
+            var viewModel = new HomeViewModel
+            {
+                ContactUs = new ContactUs(),
+                Posts = await posts.Take(3).ToListAsync()
+            };
+            return View(viewModel);
         }
 
         [HttpPost]

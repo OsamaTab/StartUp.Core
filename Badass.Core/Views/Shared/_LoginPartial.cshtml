@@ -10,7 +10,7 @@
         text-decoration: none;
         
         line-height: 40px;
-        padding-top: 10px;
+        padding:0 15px;
         font-size: 1.8rem;
         margin-right: 40px;
         color:white;
@@ -51,7 +51,7 @@
             <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
             Settings
         </a>
-        <div class="dropdown-divider"></div>
+       
         <form class="dropdown-item pt-0" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
             <button type="submit" class="bttt pl-0">Logout</button>

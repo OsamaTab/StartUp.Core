@@ -24,10 +24,17 @@ namespace Badass.Core.Areas.Admin.Controllers
         }
 
         // GET: Admin/Posts
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? filter)
         {
-            var applicationDbContext = _context.Posts.Include(p => p.CreatedBy).Include(p => p.PostType).Include(p => p.UpdatedBy);
-            return View(await applicationDbContext.ToListAsync());
+            ViewData["PostTypeId"] = new SelectList(_context.PostTypes, "Id", "Title");
+
+            var posts = _context.Posts.Include(x => x.PostType).Include(x => x.CreatedBy).Include(x => x.UpdatedBy);
+            if (filter != null)
+            {
+                posts.Where(x => x.PostTypeId == filter);
+            }
+            
+            return View(await posts.ToListAsync());
         }
 
         // GET: Admin/Posts/Details/5

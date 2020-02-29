@@ -72,8 +72,9 @@ body {
 
 }
 .contents{
-    height:1000px;
+    max-width:1000px;
 }
+
 .typewriter{
     width:606px;
     position:absolute;
