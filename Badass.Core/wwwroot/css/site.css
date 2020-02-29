@@ -1,9 +1,5 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
-:root {
-    --background: #615f86;
-}
-
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -128,7 +124,25 @@ body {
             font-size: xx-large;
         }
 }
-.block{
-    height:150px;
-    background-color:var(--background);
+.block {
+    background: linear-gradient(132deg, #ec5218, #1665c1);
+    background-size: 400% 400%;
+    animation: BackgroundGradient 20s ease infinite;
+    height:90px;
+    margin-bottom:70px;
+
 }
+@keyframes BackgroundGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+

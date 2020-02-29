@@ -4,35 +4,66 @@
 
 <style>
     .bttt {
-  background: none!important;
-  border: none;
-  
-  cursor: pointer;
-  text-decoration: none;
-    color: #fff;
-    line-height: 65px;
-    font-size: 2rem;
-}
-    .bttt:hover{
-        color: #00E676;
+        background: none !important;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        
+        line-height: 40px;
+        padding-top: 10px;
+        font-size: 1.8rem;
+        margin-right: 40px;
+        color:white;
     }
+        .bttt:hover {
+            color: #00E676;
+        }
+        button:focus {
+  
+            outline: 0 auto -webkit-focus-ring-color;
+        }
+        .dropdown-menu.dropdown-menu-right.shadow.animated--grow-in.show {
+            border-radius:10px;
+            background-color:#171717;
+}
+        .dropdown-item:focus, .dropdown-item:hover {
+     color: #00E676; 
+     text-decoration: none; 
+     background-color: #171717;
+}
+        .dropdown-toggle::after {
+    content: none;
+}
 </style>
 @if (SignInManager.IsSignedIn(User))
 {
-    <li class="nav-item">
-        <a  class="nav-link " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
-    </li>
-    <li class="nav-item">
-        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button  type="submit" class="nav-link bttt">Logout</button>
+<li class="nav-item dropdown no-arrow">
+    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="mr-2 d-none d-lg-inline text-gray-700 " title="Manage">@User.Identity.Name</span>
+    </a>
+    <!-- Dropdown - User Information -->
+    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+        <a class="dropdown-item bttt" asp-area="Identity" asp-page="/Account/Manage/Index">
+            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+            Profile
+        </a>
+        <a class="dropdown-item bttt" href="#">
+            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+            Settings
+        </a>
+        <div class="dropdown-divider"></div>
+        <form class="dropdown-item pt-0" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+            <button type="submit" class="bttt pl-0">Logout</button>
         </form>
-    </li>
+    </div>
+</li>
 }
 else
 {
-    <li class="nav-item">
+    @*<li class="nav-item">
         <a class="nav-link " asp-area="Identity" asp-page="/Account/Register">Register</a>
-    </li>
+    </li>*@
     <li class="nav-item">
         <a class="nav-link " asp-area="Identity" asp-page="/Account/Login">Login</a>
     </li>
