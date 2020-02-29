@@ -19,6 +19,7 @@ namespace Badass.Core.Data
         public DbSet<Menu> Menus { get; set; }
         public DbSet<MenuItem> MenuItems { get; set; }
         public DbSet<Currency> Currencies { get; set; }
+        public DbSet<ContactUs> ContactS { get; set; }
 
 
     }

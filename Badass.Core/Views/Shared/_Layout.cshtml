@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/nav.css" />
     <link rel="stylesheet" href="~/css/animation.css" />
+    @RenderSection("Link", false)
 </head>
 <body>
     <header>
@@ -223,16 +224,7 @@
 
         });
     </script>
-    <script>
-        
-            $('.post-module').hover(function () {
-                $(this).find('.description').stop().animate({
-                    height: "toggle",
-                    opacity: "toggle"
-                }, 300);
-            });
-        
-    </script>
+  
     @RenderSection("Scripts", required: false)
 </body>
 </html>

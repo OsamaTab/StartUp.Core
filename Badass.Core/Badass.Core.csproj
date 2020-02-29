@@ -5,6 +5,11 @@
     <UserSecretsId>aspnet-Badass.Core-D2333926-3726-4BE9-AC0D-8A399C042DE8</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\20200229145944_contactUs.cs" />
+    <Compile Remove="Migrations\20200229145944_contactUs.Designer.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.2" />
