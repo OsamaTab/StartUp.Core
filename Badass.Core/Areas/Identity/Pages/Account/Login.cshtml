@@ -1,0 +1,57 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+    Layout = "/Areas/Admin/Views/Shared/_LoginLayout.cshtml";
+
+}
+
+<div class="text-center">
+    <h1 class="h4 text-gray-900 mb-4">@ViewData["Title"]</h1>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <section>
+            <form id="account" method="post">
+
+                <hr />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+
+                    <input asp-for="Input.Email" input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+
+                    <input asp-for="Input.Password" type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox small">
+                        <input asp-for="Input.RememberMe" type="checkbox" class="custom-control-input" id="customCheck">
+                        <label asp-for="Input.RememberMe" class="custom-control-label" for="customCheck">Remember Me</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-user btn-block">Log in</button>
+                </div>
+                <hr>
+                <div class="text-center">
+                    <a class="small" asp-page="./ForgotPassword">Forgot Password?</a>
+                </div>
+                <div class="text-center">
+                    <a class="small" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Create an Account!</a>
+                </div>
+               
+            </form>
+        </section>
+    </div>
+
+</div>
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

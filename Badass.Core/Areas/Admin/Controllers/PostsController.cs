@@ -89,11 +89,13 @@ namespace Badass.Core.Areas.Admin.Controllers
             }
             
             var post = await _context.Posts.FindAsync(id);
+
             if (post == null)
             {
                 return NotFound();
             }
             ViewData["PostTypeId"] = new SelectList(_context.PostTypes, "Id", "Title", post.PostTypeId);
+  
             return View(post);
         }
 
@@ -102,7 +104,7 @@ namespace Badass.Core.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,PostTypeId,Title,Body,Status")] Post post)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,PostTypeId,Title,Body,Status, CreatedDate, CreatedByUserId")] Post post)
         {
             if (id != post.Id)
             {
@@ -113,8 +115,6 @@ namespace Badass.Core.Areas.Admin.Controllers
             {
                 try
                 {
-                    post.CreatedByUserId = post.CreatedByUserId;
-                    post.CreatedDate = post.CreatedDate;
                     var user = await _userManager.GetUserAsync(User);
                     post.UpdatedByUserId = user.Id;
                     post.UpdatedDate = DateTime.Now;
