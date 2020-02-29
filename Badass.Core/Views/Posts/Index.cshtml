@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Badass.Core.Models.Post>
+
+@{
+
+}
+<link rel="stylesheet" href="~/css/card.css" />
+
+<div class="block">
+
+</div>
+<div class="w-100">
+    <div class="post">
+        <!-- Normal Demo-->
+        @foreach (var item in Model)
+        {
+            <div class="column">
+                <!-- Post-->
+                <div class="post-module">
+                    <!-- Thumbnail-->
+                    <div class="thumbnail">
+                        <div class="date">
+                            <div class="day">27</div>
+                            <div class="month">Mar</div>
+                        </div><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/photo-1429043794791-eb8f26f44081.jpeg" />
+                    </div>
+                    <!-- Post Content-->
+                    <div class="post-content">
+                        <div class="category">@Html.DisplayFor(modelItem => item.PostType.Id)</div>
+                        <h1 class="title">@Html.DisplayFor(modelItem => item.Title)</h1>
+                        @*<h2 class="sub_title">The city that never sleeps.</h2>*@
+                        <p class="description">@Html.DisplayFor(modelItem => item.Body)</p>
+                        <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">o</i> @Html.DisplayFor(modelItem => item.CreatedDate)</span><span class="comments"><i class="fa fa-comments"></i><a href="#"> 39 comments</a></span></div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+
+</div>
