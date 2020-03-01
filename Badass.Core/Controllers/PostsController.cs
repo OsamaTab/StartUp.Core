@@ -26,9 +26,24 @@ namespace Badass.Core.Controllers
         }
 
         // GET: Posts/Details/5
-        public ActionResult Details(int id)
+        public async Task<IActionResult> Details(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var post = await _context.Posts
+                .Include(p => p.CreatedBy)
+                .Include(p => p.PostType)
+                .Include(p => p.UpdatedBy)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (post == null)
+            {
+                return NotFound();
+            }
+
+            return View(post);
         }
     }
 }

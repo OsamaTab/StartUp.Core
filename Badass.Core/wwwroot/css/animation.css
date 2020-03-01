@@ -34,7 +34,7 @@
         list-style: none;
         width: 25px;
         height: 25px;
-        background: rgba(255, 255, 255, 0.2);
+        background: rgba(23, 23, 23, 0.3);
         animation: animate 20s linear infinite;
         
     }
@@ -96,7 +96,7 @@
 }
 body .footer {
     z-index: 1;
-    --footer-background: #171717;
+    --footer-background: #9a5959;
     display: grid;
     position: relative;
     grid-area: footer;
@@ -118,7 +118,7 @@ body .footer {
         body .footer .bubbles .bubble {
             position: absolute;
             left: var(--position, 50%);
-            background: var(--footer-background);
+            background: #9a5959;
             border-radius: 100%;
             -webkit-animation: bubble-size var(--time, 4s) ease-in infinite var(--delay, 0s), bubble-move var(--time, 4s) ease-in infinite var(--delay, 0s);
             animation: bubble-size var(--time, 4s) ease-in infinite var(--delay, 0s), bubble-move var(--time, 4s) ease-in infinite var(--delay, 0s);

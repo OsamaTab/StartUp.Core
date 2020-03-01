@@ -6,13 +6,13 @@
 
 @section Link{
     <link rel="stylesheet" href="~/css/card.css" />
-
 }
+
 <div class="block">
 
 </div>
 
-<div class="row mar">
+<div class="row-card row">
     @foreach(var item in Model) { 
     <div class="col-4 example-2 card1">
         <div class="wrapper">
@@ -33,10 +33,10 @@
             </div>
             <div class="data">
                 <div class="content">
-                    <span class="Catagore">@Html.DisplayFor(modelItem => item.PostType.Id)</span>
-                    <h1 class="title"><a asp-area="Action" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a></h1>
+                    <span class="Catagore">@Html.DisplayFor(modelItem => item.PostType.Title)</span>
+                    <h1 class="title"><a asp-controller="Posts" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a></h1>
                     <p class="text">@Html.DisplayFor(modelItem => item.Body)</p>
-                    <a asp-area="Action" asp-action="Details" asp-route-id="@item.Id" class="button">Read more</a>
+                    <a asp-controller="Posts" asp-action="Details" asp-route-id="@item.Id" class="button">Read more</a>
                 </div>
             </div>
         </div>

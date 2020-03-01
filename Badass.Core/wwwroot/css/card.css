@@ -9,9 +9,10 @@ h1 {
     font-weight: 300;
 }
 
-.row {
+.row-card {
    max-width:1300px;
-    margin: 50px auto 0;
+    margin: 50px auto ;
+    
 }
 
 .card1 {
@@ -21,9 +22,7 @@ h1 {
     padding-bottom:50px;
 
 }
-.mar{
-    margin-bottom:100px;
-}
+
 
     .card1 .menu-content {
         margin: 0;
@@ -99,8 +98,10 @@ h1 {
     }
 
     .card1 .text {
+        overflow:hidden;
         height: 70px;
         margin: 0;
+        font-size:1rem;
     }
 
     .card1 input[type='checkbox'] {

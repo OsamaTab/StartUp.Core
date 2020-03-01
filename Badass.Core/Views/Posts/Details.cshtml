@@ -1,78 +1,140 @@
 ﻿@model Badass.Core.Models.Post
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Details";
+}
+@section Link{
+    <style>
+        
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-<!DOCTYPE html>
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
+.intro {
+  position: relative;
+  height: auto;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  background-image: linear-gradient(35deg, #8DD9FF, #FFDA00);
+}
+.intro img {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+  mix-blend-mode: multiply;
+}
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Post</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PostType)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PostType.Id)
-        </dd class>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class = "col-sm-10">
+.intro .caption {
+  position: absolute;
+  bottom: 25%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 3;
+  color: white;
+}
+.intro .caption h1 {
+  display: inline-block;
+  width: 70%;
+  font-size: 6vw;
+  font-weight: 100;
+}
+
+.intro .overlay {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+.intro .overlay svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.copy {
+  width: 100%;
+  max-width: 60rem;
+  height: 200%;
+  margin: 0 auto;
+  padding: 10vw 5vw 0 5vw;
+  color: #476d80;
+  font-weight: 300;
+}
+.copy p {
+  margin-bottom: 1.5rem;
+}
+
+.copy .teaser {
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+    </style>
+
+}
+
+<figure class="intro">
+    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/46992/diver2.jpg" alt="" />
+    <figcaption class="caption">
+        <h1>
             @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Body)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Body)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreatedBy.Id)
-        </dd class>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UpdatedBy)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UpdatedBy.Id)
-        </dd class>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Status)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreatedDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UpdatedDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UpdatedDate)
-        </dd>
-    </dl>
-    
-    <form asp-action="Details">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
-</div>
-</body>
-</html>
+        </h1>
+    </figcaption>
+    <span class="overlay">
+        <svg version="1.1" id="circle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             viewBox="0 0 500 250" enable-background="new 0 0 500 250" xml:space="preserve" PreserveAspectRatio="none">
+<path fill="#171717" d="M250,246.5c-97.85,0-186.344-40.044-250-104.633V250h500V141.867C436.344,206.456,347.85,246.5,250,246.5z" />
+
+</svg>
+    </span>
+</figure>
+<article class="copy pb-5 mb-5"
+    <h3>
+        @Html.DisplayFor(model => model.PostType.Title)
+    </h3>
+    <h2 class="teaser">
+        @Html.DisplayFor(model => model.Body)
+    </h2>
+    <h3>
+        @Html.DisplayFor(model => model.CreatedBy.Email)
+    </h3>
+</article>
+
+
+
+
+@section Scripts{ 
+    <script>/*
+found this function here 
+http://stackoverflow.com/a/26831113
+*/
+
+function inViewport($el) {
+    var H = $(window).height(),
+        r = $el[0].getBoundingClientRect(), t=r.top, b=r.bottom;
+    return Math.max(0, t>0? H-t : (b<H?b:H));  
+}
+
+$(window).on("scroll resize", function(){
+  var window_offset = inViewport($('.intro')); 
+  $(".overlay").height(window_offset);
+  $(".caption").css("bottom", (window_offset / 4) );
+});
+</script>
+}
