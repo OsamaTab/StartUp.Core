@@ -22,7 +22,7 @@
     </ul>
 </div>
 
-<h1 class="text-center pt-5 text-white" >Latest News</h1>
+<h2 class="text-center pt-5 text-white" >Latest News</h2>
 <div class="row-card row">
     @foreach (var item in Model.Posts)
     {
@@ -46,7 +46,7 @@
                 <div class="data">
                     <div class="content">
                         <span class="Catagore">@Html.DisplayFor(modelItem => item.PostType.Title)</span>
-                        <h1 class="title"><a asp-controller="Posts" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a></h1>
+                        <h3 class="title"><a asp-controller="Posts" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a></h3>
                         <p class="text">@Html.DisplayFor(modelItem => item.Body)</p>
                         <a asp-controller="Posts" asp-action="Details" asp-route-id="@item.Id" class="button">Read more</a>
                     </div>
@@ -58,13 +58,13 @@
 
 <section class="xbox">
     <div class="content my-auto">
-        <h1>Xbox Game Pass Ultimate</h1>
+        <h2>Xbox Game Pass Ultimate</h2>
         <p>
             Xbox Game Pass Ultimate XboxGold Live  and over 100 high-quality
             console and PC games. Play together with friends and discover your
             next favorite game.
         </p>
-        <button  class="btn btn-dark btn-lg">
+        <button  class="btn btn-dark">
             Join Now <i class="fas fa-chevron-right"></i>
         </button>
     </div>

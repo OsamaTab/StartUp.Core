@@ -3,7 +3,10 @@
 @{
     ViewData["Title"] = "Edit";
 }
+@section Link{
+    <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
 
+}
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -27,7 +30,7 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="Body" class="control-label"></label>
-                        <textarea height="400" asp-for="Body"></textarea>
+                        <textarea asp-for="Body"></textarea>
                         <span asp-validation-for="Body" class="text-danger"></span>
                     </div>
 
@@ -54,7 +57,6 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
     <script>
         (function ($) {
             "use strict";

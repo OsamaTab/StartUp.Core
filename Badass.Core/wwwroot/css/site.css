@@ -272,8 +272,8 @@ fieldset {
         -webkit-mask-repeat: no-repeat;
         -webkit-mask-position: left top, left bottom;
         width: 100%;
-        font-size: 2rem;
-        padding: 160px 0 0 30px;
+        
+        padding: 160px 0 0 60px;
         color: white;
     }
 
