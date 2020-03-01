@@ -5,12 +5,12 @@
 }
 
 
-    <a class="btn btn-primary my-3" asp-action="Create">Create New</a>
+<a class="btn btn-primary my-3" asp-action="Create">Create New</a>
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-        <form asp-area="Admin" asp-controller="Posts" asp-action="Index" asp-route-id="1">
+        <form asp-area="Admin" asp-controller="Posts" asp-action="Index" asp-route-id="6">
             <div class="form-group">
                 <label for="PostTypeId" class="control-label"></label>
                 <select for="PostTypeId" class="form-control" asp-items="ViewBag.PostTypeId"></select>
@@ -48,7 +48,9 @@
                         <th>
                             @Html.DisplayNameFor(model => model.UpdatedDate)
                         </th>
-                        <th></th>
+                        <th>
+                            Actions
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -79,9 +81,9 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.UpdatedDate)
                             </td>
-                            <td>
-                                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <td class="mb-auto">
+                                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
+                                <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
                                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                             </td>
                         </tr>
