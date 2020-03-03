@@ -4,17 +4,16 @@
     ViewData["Title"] = "Edit";
 }
 @section Link{
-    <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
-
+    <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
 }
 
-<div class="card shadow mb-4">
+<div class="card shadow mb-4 col-md-9 px-0">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Edit</h6>
     </div>
     <div class="card-body">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input type="hidden" asp-for="Id" />
@@ -30,7 +29,7 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="Body" class="control-label"></label>
-                        <textarea asp-for="Body"></textarea>
+                        <textarea asp-for="Body" cols="80" id="editor1" rows="10" data-sample-short>&lt;p&gt;This is some &lt;strong&gt;sample text&lt;/strong&gt;. You are using &lt;a href=&quot;https://ckeditor.com/&quot;&gt;CKEditor&lt;/a&gt;.&lt;/p&gt;</textarea>
                         <span asp-validation-for="Body" class="text-danger"></span>
                     </div>
 
@@ -57,16 +56,11 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    <script>
-        (function ($) {
-            "use strict";
-            $(document).ready(function () {
-                tinymce.init({
-                    selector: 'textarea'
-                });
+<script type="text/javascript">
 
-            });
-        })(this.jQuery);
+    CKEDITOR.replace('editor1', {
+        height: 250
+    });
 
-    </script>
+</script>
 }

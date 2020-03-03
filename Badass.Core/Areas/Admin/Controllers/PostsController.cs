@@ -24,16 +24,18 @@ namespace Badass.Core.Areas.Admin.Controllers
         }
 
         // GET: Admin/Posts
-        public async Task<IActionResult> Index(int? filter)
+        public async Task<IActionResult> Index(int? filterPostId)
         {
             ViewData["PostTypeId"] = new SelectList(_context.PostTypes, "Id", "Title");
 
-            var posts = _context.Posts.Include(x => x.PostType).Include(x => x.CreatedBy).Include(x => x.UpdatedBy);
-            if (filter != null)
-            {
-                posts.Where(x => x.PostTypeId == filter);
-            }
             
+            if (filterPostId != null)
+            {
+                var postss = _context.Posts.Include(x => x.PostType).Include(x => x.CreatedBy).Include(x => x.UpdatedBy).Where(x => x.PostTypeId == filterPostId);
+                return View(await postss.ToListAsync());
+            }
+            var posts = _context.Posts.Include(x => x.PostType).Include(x => x.CreatedBy).Include(x => x.UpdatedBy);
+
             return View(await posts.ToListAsync());
         }
 
