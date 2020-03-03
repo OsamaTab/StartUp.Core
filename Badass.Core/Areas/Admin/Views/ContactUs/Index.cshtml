@@ -2,16 +2,17 @@
 
 @{
 }
-
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-    </div>
+<div class="card h-100 my-2 mx-2">
     <div class="card-body">
+        <div class="p-0 mx-0 row">
+            <h3 class="card-title col-md-8">ContactUs</h3>
+            
+        </div>
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-hover">
                 <thead>
                     <tr>
+                        <th>Row</th>
                         <th>
                             @Html.DisplayNameFor(model => model.Name)
                         </th>
@@ -30,27 +31,27 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Email)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Massage)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.SendTime)
-                        </td>
-                        <td>
+                        <tr>
+                            <td></td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Massage)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SendTime)
+                            </td>
+                            <td>
 
-                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                        </td>
-                    </tr>
+                                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            </td>
+                        </tr>
                     }
-
                 </tbody>
             </table>
         </div>

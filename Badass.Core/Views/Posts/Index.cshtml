@@ -34,7 +34,7 @@
             <div class="data">
                 <div class="content">
                     <span class="Catagore">@Html.DisplayFor(modelItem => item.PostType.Title)</span>
-                    <h1 class="title"><a asp-controller="Posts" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a></h1>
+                    <h2 class="title"><a asp-controller="Posts" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a></h2>
                     <p class="text">@Html.DisplayFor(modelItem => item.Body)</p>
                     <a asp-controller="Posts" asp-action="Details" asp-route-id="@item.Id" class="button">Read more</a>
                 </div>

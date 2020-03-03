@@ -4,26 +4,25 @@
     ViewData["Title"] = "Index";
 }
 
-<a class="btn btn-primary my-3" asp-action="Create">Create New</a>
-
-<div class="card shadow mb-4">
-    <div class="card-header py-3 mx-0 row">
-        <h6 class="m-0 font-weight-bold text-primary col-md-8">Posts</h6>
-        <form asp-area="Admin" asp-controller="Posts" asp-action="Index" id="filterForm" class="col-md-4">
-            <div class="form-group">
-                <label for="filterPostId" class="control-label">Filter by Post </label>
-                <select id="postsfilter" name="filterPostId" class="form-control" asp-items="ViewBag.PostTypeId">
-                        <option value="" selected>Select PostType</option>
-                </select>
-            </div>
-        </form>
-    </div>
-
+<a class="btn btn-primary my-2 mx-2" style="width:10%" asp-action="Create">Create New</a>
+<div class="card h-100 mx-2">
     <div class="card-body">
+        <div class="p-0 mx-0 row">
+            <h3 class="card-title col-md-8">Posts</h3>
+            <form asp-area="Admin" asp-controller="Posts" asp-action="Index" id="filterForm" class="col-md-4">
+                <div class="form-group m-0">
+                    <label for="filterPostId" class="control-label">Filter by Post </label>
+                    <select id="postsfilter" name="filterPostId" class="form-control" asp-items="ViewBag.PostTypeId">
+                        <option value="" selected>Select PostType</option>
+                    </select>
+                </div>
+            </form>
+        </div>
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-hover">
                 <thead>
                     <tr>
+                        <th>Row</th>
                         <th>
                             @Html.DisplayNameFor(model => model.PostType)
                         </th>
@@ -58,12 +57,15 @@
                     {
                         <tr>
                             <td>
+
+                            </td>
+                            <td>
                                 @Html.DisplayFor(modelItem => item.PostType.Title)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Title)
                             </td>
-                            <td>
+                            <td >
                                 @Html.DisplayFor(modelItem => item.Body)
                             </td>
                             <td>
@@ -88,7 +90,6 @@
                             </td>
                         </tr>
                     }
-
                 </tbody>
             </table>
         </div>
@@ -100,5 +101,6 @@
         $("#postsfilter").on('change', function () {
             $("#filterForm").submit();
         });
+
     </script>
 }
