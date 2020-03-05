@@ -20769,24 +20769,27 @@ dl li {
   margin: 0;
 }
 
-.sidebar .nav:not(.sub-menu) > .nav-item > .nav-link[aria-expanded="true"] {
-  border-radius: 0.437rem 0.437rem 0 0;
-  background: #e8e7ec;
-}
+    .sidebar .nav:not(.sub-menu) > .nav-item > .nav-link[aria-expanded="true"] {
+        border-radius: 0.437rem 0.437rem 0 0;
+        background: #ffffffd9;
+    }
 
-.sidebar .nav:not(.sub-menu) > .nav-item.active {
-  background: #e8e7ec;
-  border-radius: 0.437rem;
-}
+    .sidebar .nav:not(.sub-menu) > .nav-item.active .nav.item:hover {
+        background: #ffffffd9;
+        border-radius: 0.437rem;
+    }
 
 .sidebar .nav.sub-menu {
-  margin-bottom: 0;
-  margin-top: 0;
-  list-style: none;
-  padding: 0.25rem 0 0 3.07rem;
-  background: #e8e7ec;
-  padding-bottom: 12px;
+    margin-bottom: 0;
+    margin-top: 0;
+    list-style: none;
+    padding: 0.25rem 0 0 3.07rem;
+    background: #ffffffb3;
+    padding-bottom: 12px;
 }
+    .sidebar .nav.sub-menu:hover {
+        background: #ffffff57;
+    }
 
 .sidebar .nav.sub-menu .nav-item {
   padding: 0;

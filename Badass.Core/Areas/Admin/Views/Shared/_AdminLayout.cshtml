@@ -162,14 +162,27 @@
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                             <i class="ti-palette menu-icon"></i>
-                            <span class="menu-title">UI Elements</span>
+                            <span class="menu-title">DataBase</span>
                             <i class="menu-arrow"></i>
                         </a>
-                        <div class="collapse" id="ui-basic">
+                        <div class="collapse hide" id="ui-basic">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" asp-area="Admin" asp-action="index" asp-controller="Posts">Posts</a></li>
                                 <li class="nav-item"> <a class="nav-link" asp-area="Admin" asp-action="index" asp-controller="PostTypes">PostType</a></li>
                                 <li class="nav-item"> <a class="nav-link" asp-area="Admin" asp-action="index" asp-controller="ContactUs">ContactUs</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
+                            <i class="ti-palette menu-icon"></i>
+                            <span class="menu-title">AccountManager</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse hide" id="ui-basic1">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" asp-area="Admin" asp-action="index" asp-controller="Roles">Roles</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-area="Admin" asp-action="index" asp-controller="Account">Users</a></li>
                             </ul>
                         </div>
                     </li>
@@ -208,14 +221,14 @@
     <!-- Custom js for this page-->
     <script src="~/js/dashboard.js"></script>
     <script>
-        
-        var table = document.getElementsByTagName('table')[0],
-    rows = table.getElementsByTagName('tr'),
-    text = 'textContent' in document ? 'textContent' : 'innerText';
 
-for (var i = 1, len = rows.length; i < len; i++){
-    rows[i].children[0][text] = i + '' + rows[i].children[0][text];
-}
+        var table = document.getElementsByTagName('table')[0],
+            rows = table.getElementsByTagName('tr'),
+            text = 'textContent' in document ? 'textContent' : 'innerText';
+
+        for (var i = 1, len = rows.length; i < len; i++) {
+            rows[i].children[0][text] = i + '' + rows[i].children[0][text];
+        }
     </script>
     <!-- End custom js for this page-->
     @RenderSection("Scripts", required: false)

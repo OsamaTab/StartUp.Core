@@ -138,7 +138,7 @@ namespace Badass.Core.Areas.Admin
         // POST: Admin/PostTypes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var postType = await _context.PostTypes.FindAsync(id);
             _context.PostTypes.Remove(postType);

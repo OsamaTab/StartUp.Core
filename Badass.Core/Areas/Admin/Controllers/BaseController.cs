@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Badass.Core.Areas.Admin
 {
     [Area("Admin")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class BaseController : Controller
     {
     }

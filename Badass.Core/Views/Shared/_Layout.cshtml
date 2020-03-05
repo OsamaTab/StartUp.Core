@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -24,9 +26,12 @@
                         <li class="nav-item">
                             <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link " asp-area="Admin" asp-controller="Home" asp-action="Index">Admin</a>
-                        </li>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link " asp-area="Admin" asp-controller="Home" asp-action="Index">Admin</a>
+                            </li>
+                        }
                         <li class="nav-item">
                             <a class="nav-link " asp-area="" asp-controller="Posts" asp-action="Index">Posts</a>
                         </li>
@@ -50,7 +55,7 @@
         </main>
     </div>
 
-   
+
 
     <div class="main"></div>
     <div class="footer">
@@ -186,30 +191,30 @@
         </div>
         <div class="content">
             <div class="container">
-            <div class="row text-white"> 
-                <div class="col-md-4">
-                    <h3 class="text-black-50">Catagores</h3>
-                    <ul style="list-style-type: none;">
-                        <li>Home</li>
-                        <li>Admin</li>
-                    </ul>
+                <div class="row text-white">
+                    <div class="col-md-4">
+                        <h3 class="text-black-50">Catagores</h3>
+                        <ul style="list-style-type: none;">
+                            <li>Home</li>
+                            <li>Admin</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h3 class="text-black-50">Sites</h3>
+                        <ul style="list-style-type: none;">
+                            <li>Home</li>
+                            <li>Admin</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h3 class="text-black-50">Projects</h3>
+                        <ul style="list-style-type: none;">
+                            <li>Home</li>
+                            <li>Admin</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <h3 class="text-black-50">Sites</h3>
-                    <ul style="list-style-type: none;">
-                        <li>Home</li>
-                        <li>Admin</li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h3 class="text-black-50">Projects</h3>
-                    <ul style="list-style-type: none;">
-                        <li>Home</li>
-                        <li>Admin</li>
-                    </ul>
-                </div>
-                </div>
-                <hr class="m-0"/>
+                <hr class="m-0" />
                 <p class="text-center m-0">StarUp</p>
             </div>
         </div>

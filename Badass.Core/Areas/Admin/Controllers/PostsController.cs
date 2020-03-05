@@ -35,7 +35,6 @@ namespace Badass.Core.Areas.Admin.Controllers
                 return View(await postss.ToListAsync());
             }
             var posts = _context.Posts.Include(x => x.PostType).Include(x => x.CreatedBy).Include(x => x.UpdatedBy);
-
             return View(await posts.ToListAsync());
         }
 

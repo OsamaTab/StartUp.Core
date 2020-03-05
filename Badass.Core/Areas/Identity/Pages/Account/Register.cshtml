@@ -1,9 +1,8 @@
-﻿@page
-@model RegisterModel
+﻿
+@model Badass.Core.ViewModels.RegisterViewModel
 @{
     ViewData["Title"] = "Register";
     Layout = "/Areas/Admin/Views/Shared/_LoginLayout.cshtml";
-
 }
 
     <div class="text-center">
@@ -11,29 +10,29 @@
     </div>
 <div class="row">
     <div class="col-md-12">
-        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+        <form  method="post">
             <h4>Create a new account.</h4>
             <hr />
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
 
-                <input asp-for="Input.Email" input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." />
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                <input asp-for="Email" input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." />
+                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
 
-                <input asp-for="Input.Password" type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" />
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                <input asp-for="Password" type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">
 
-                <input asp-for="Input.ConfirmPassword" type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="ConfirmPassword" />
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                <input asp-for="ConfirmPassword" type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="ConfirmPassword" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             </div>
             <button type="submit" class="btn btn-primary btn-user btn-block">Register</button>
             <hr />
             <div class="text-center">
-                <a class="small" asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">LogIn</a>
+                @*<a class="small" asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">LogIn</a>*@
             </div>
         </form>
     </div>

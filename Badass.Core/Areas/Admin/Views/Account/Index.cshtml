@@ -1,0 +1,56 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model IEnumerable<Badass.Core.Areas.Admin.ViewModels.UserViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="card h-100 mx-2 my-2">
+    <div class="card-body">
+        <div class="p-0 mx-0 row">
+            <h3 class="card-title col-md-8">Users</h3>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Row
+                        </th>
+                        <th>
+                            Email
+                        </th><th>
+                           Role
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <td></td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserName)
+                            </td><td>
+                                @Html.DisplayFor(modelItem => item.RoleName)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.UserId">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.UserId">Details</a> |
+                                <form class="d-inline-flex" asp-action="Delete" asp-route-id="@item.UserId">
+                                    
+                                    <input type="submit" value="Delete" class="btn btn-link btn-sm p-0" /> 
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
