@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Badass.Core.Models;
 using Badass.Core.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +11,10 @@ namespace Badass.Core.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
 
-        public AccountController(UserManager<IdentityUser> userManager,SignInManager<IdentityUser> signInManager )
+        public AccountController(UserManager<ApplicationUser> userManager,SignInManager<ApplicationUser> signInManager )
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -33,7 +34,7 @@ namespace Badass.Core.Controllers
                 return View(userModel);
             }
 
-            var user = new IdentityUser { UserName = userModel.Email, Email = userModel.Email };
+            var user = new ApplicationUser { UserName = userModel.Email, Email = userModel.Email };
 
             var result = await _userManager.CreateAsync(user, userModel.Password);
             if (result.Succeeded)

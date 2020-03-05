@@ -12,6 +12,7 @@ using Badass.Core.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Badass.Core.Models;
 
 namespace Badass.Core
 {
@@ -30,7 +31,7 @@ namespace Badass.Core
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration["ConnectionString"]));
-            services.AddDefaultIdentity<IdentityUser>(options => { 
+            services.AddDefaultIdentity<ApplicationUser>(options => { 
                 options.SignIn.RequireConfirmedAccount = true;
                 options.User.RequireUniqueEmail = true;
             })

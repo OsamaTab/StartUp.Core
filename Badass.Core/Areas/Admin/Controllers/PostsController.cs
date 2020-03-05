@@ -14,10 +14,10 @@ namespace Badass.Core.Areas.Admin.Controllers
     [Area("Admin")]
     public class PostsController : Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _context;
 
-        public PostsController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
+        public PostsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
             _userManager = userManager;

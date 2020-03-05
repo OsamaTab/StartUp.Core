@@ -19,10 +19,10 @@ namespace Badass.Core.Models
         public string Title { get; set; }
         public string Body { get; set; }
         [ForeignKey("CreatedByUserId")]
-        public IdentityUser CreatedBy { get; set; }
+        public ApplicationUser CreatedBy { get; set; }
         public string? CreatedByUserId { get; set; }
         [ForeignKey("UpdatedByUserId")]
-        public IdentityUser UpdatedBy { get; set; }
+        public ApplicationUser UpdatedBy { get; set; }
         public string? UpdatedByUserId { get; set; }
         public int Status { get; set; }
         public DateTime CreatedDate { get; set; }

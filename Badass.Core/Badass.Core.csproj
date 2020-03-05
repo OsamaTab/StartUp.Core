@@ -10,6 +10,8 @@
     <Compile Remove="Migrations\20200229145944_contactUs.Designer.cs" />
     <Compile Remove="Migrations\20200303205613_IdentityRole.cs" />
     <Compile Remove="Migrations\20200303205613_IdentityRole.Designer.cs" />
+    <Compile Remove="Migrations\20200305174636_adding_ApplicationUser.cs" />
+    <Compile Remove="Migrations\20200305174636_adding_ApplicationUser.Designer.cs" />
   </ItemGroup>
 
 

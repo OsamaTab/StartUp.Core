@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Badass.Core.Areas.Admin.ViewModels;
 using Badass.Core.Data;
+using Badass.Core.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -15,12 +16,12 @@ namespace Badass.Core.Areas.Admin.Controllers
 {
     public class AccountController : BaseController
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ApplicationDbContext _context;
         private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AccountController(UserManager<IdentityUser> userManager,SignInManager<IdentityUser> signInManager,
+        public AccountController(UserManager<ApplicationUser> userManager,SignInManager<ApplicationUser> signInManager,
             ApplicationDbContext context,RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
@@ -79,7 +80,7 @@ namespace Badass.Core.Areas.Admin.Controllers
         }
 
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string userId, [Bind("Email")] IdentityUser user, string roleId)
+        public async Task<IActionResult> Edit(string userId, [Bind("Email")] ApplicationUser user, string roleId)
         {
             if (userId != user.Id)
             {
