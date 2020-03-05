@@ -80,14 +80,17 @@ namespace Badass.Core.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string Id, [Bind("Name")] IdentityRole role)
+        public async Task<IActionResult> Edit(string id,IdentityRole roles)
         {
+            if (id!= roles.Id){
+                return NotFound();
+            }
 
             if (ModelState.IsValid)
             {
-
+                var role = await _roleManager.FindByIdAsync(id);
+                role.Name = roles.Name;
                 IdentityResult result = await _roleManager.UpdateAsync(role);
-
 
                 if (result.Succeeded)
                 {
@@ -98,16 +101,16 @@ namespace Badass.Core.Areas.Admin.Controllers
                     ModelState.AddModelError("", error.Description);
                 }
             }
-            return View(role);
+            return View(roles);
         }
-        public async Task<IActionResult> Delete(string? Id)
+        public async Task<IActionResult> Delete(string? id)
         {
-            if (Id == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var role = await _roleManager.FindByIdAsync(Id);
+            var role = await _roleManager.FindByIdAsync(id);
             if (role == null)
             {
                 return NotFound();
@@ -118,10 +121,10 @@ namespace Badass.Core.Areas.Admin.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string Id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
 
-            var role = await _roleManager.FindByIdAsync(Id);
+            var role = await _roleManager.FindByIdAsync(id);
             IdentityResult result = await _roleManager.DeleteAsync(role);
             return RedirectToAction("index", "roles");
 
