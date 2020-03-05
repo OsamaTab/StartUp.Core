@@ -96,7 +96,7 @@
 }
 body .footer {
     z-index: 1;
-    --footer-background: #9a5959;
+    --footer-background: #262626;
     display: grid;
     position: relative;
     grid-area: footer;
@@ -104,40 +104,43 @@ body .footer {
 }
 
     body .footer .bubbles {
-        width:95%;
+        width: 95%;
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         height: 1rem;
-        background: var(--footer-background);
+        background: linear-gradient(132deg, #ec5218, #1665c1);
+        background-size: 400% 400%;
+        animation: back 20s ease infinite;
         -webkit-filter: url("#blob");
         filter: url("#blob");
     }
 @media (max-width: 600px) {
     body .footer .bubbles {
         width: 90%;
-    
+        visibility:hidden;
+        display:none;
     }
 
 }
 
-    body .footer .bubbles .bubble {
-        position: absolute;
-        left: var(--position, 50%);
-        background: #9a5959;
-        border-radius: 100%;
-        -webkit-animation: bubble-size var(--time, 4s) ease-in infinite var(--delay, 0s), bubble-move var(--time, 4s) ease-in infinite var(--delay, 0s);
-        animation: bubble-size var(--time, 4s) ease-in infinite var(--delay, 0s), bubble-move var(--time, 4s) ease-in infinite var(--delay, 0s);
-        -webkit-transform: translate(-50%, 100%);
-        transform: translate(-50%, 100%);
-    }
+body .footer .bubbles .bubble {
+    position: absolute;
+    left: var(--position, 50%);
+    background: #262626;
+    border-radius: 100%;
+    -webkit-animation: bubble-size var(--time, 4s) ease-in infinite var(--delay, 0s), bubble-move var(--time, 4s) ease-in infinite var(--delay, 0s);
+    animation: bubble-size var(--time, 4s) ease-in infinite var(--delay, 0s), bubble-move var(--time, 4s) ease-in infinite var(--delay, 0s);
+    -webkit-transform: translate(-50%, 100%);
+    transform: translate(-50%, 100%);
+}
 
     body .footer .content {
         z-index: 2;
         display: grid;
         grid-template-columns: 1fr auto;
-        grid-gap: 4rem;
+        /*grid-gap: 4rem;*/
         padding: 1rem 2rem 0;
         background: var(--footer-background);
     }

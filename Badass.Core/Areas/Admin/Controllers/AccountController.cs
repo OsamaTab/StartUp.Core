@@ -61,53 +61,41 @@ namespace Badass.Core.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            //var role = await _userManager.FindByIdAsync(id);
-            var userViewModel = new UserViewModel();
-            var user= await _userManager.FindByIdAsync(id);
-            if (userViewModel.Equals(user))
+            var user = await _userManager.FindByIdAsync(id);
+            var model = new UserViewModel
             {
-                userViewModel.UserName = user.UserName;
-                userViewModel.UserId = user.Id;
-                
+                UserId = user.Id,
+                UserName = user.Email,
 
-            }
-
-            if (user == null)
-            {
-                return NotFound();
-            }
-            return View(user);
+            };
+            return View(model);
         }
-
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string userId, [Bind("Email")] ApplicationUser user, string roleId)
+        public async Task<IActionResult> Edit(string userId,UserViewModel users ,string roleId)
         {
-            if (userId != user.Id)
-            {
-                return NotFound();
-            }
 
             if (ModelState.IsValid)
             {
-                try
+                var user = await _userManager.FindByIdAsync(userId);
+                var role = await _roleManager.FindByIdAsync(users.RoleId);
+                
+                user.Email = users.UserName;
+                role.Name = users.RoleName;
+                await _userManager.AddToRoleAsync(user, role.Name);
+                 
+                IdentityResult result = await _userManager.UpdateAsync(user);
+
+                if (result.Succeeded)
                 {
-                    await _userManager.AddToRoleAsync(user, roleId);
-                    await _userManager.UpdateAsync(user);
+                    return RedirectToAction("index", "roles");
                 }
-                catch (DbUpdateConcurrencyException)
+                foreach (IdentityError error in result.Errors)
                 {
-                    if (!UserExists(user.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    ModelState.AddModelError("", error.Description);
                 }
-                return RedirectToAction(nameof(Index));
             }
-            return View(user);
+            return View(users);
         }
 
         [HttpPost]
@@ -119,11 +107,6 @@ namespace Badass.Core.Areas.Admin.Controllers
             await _userManager.DeleteAsync(user);
             return RedirectToAction("index", "account");
 
-        }
-
-        private bool UserExists(string id)
-        {
-            return _userManager.Users.Any(e => e.Id == id);
         }
     }
 }

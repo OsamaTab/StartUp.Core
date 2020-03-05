@@ -17,14 +17,14 @@
         <nav class="nav">
             <div class="container">
                 <div class="logo">
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">StartUp</a>
+                    <a class="navbar-brand" asp-area=""  asp-controller="Home" asp-action="Index">StartUp</a>
                 </div>
                 <div id="mainListDiv" class="main_list">
 
                     <ul class="navlinks">
 
                         <li class="nav-item">
-                            <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link " asp-area=""  asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         @if (User.IsInRole("Admin"))
                         {
@@ -33,7 +33,7 @@
                             </li>
                         }
                         <li class="nav-item">
-                            <a class="nav-link " asp-area="" asp-controller="Posts" asp-action="Index">Posts</a>
+                            <a class="nav-link " asp-area=""  asp-controller="Posts" asp-action="Index">Posts</a>
                         </li>
                         <partial name="_LoginPartial" />
 
@@ -191,23 +191,23 @@
         </div>
         <div class="content">
             <div class="container">
-                <div class="row text-white">
+                <div class="row text-white mt-3">
                     <div class="col-md-4">
-                        <h3 class="text-black-50">Catagores</h3>
+                        <h3 class="text-white-50">Catagores</h3>
                         <ul style="list-style-type: none;">
                             <li>Home</li>
                             <li>Admin</li>
                         </ul>
                     </div>
                     <div class="col-md-4">
-                        <h3 class="text-black-50">Sites</h3>
+                        <h3 class="text-white-50">Sites</h3>
                         <ul style="list-style-type: none;">
                             <li>Home</li>
                             <li>Admin</li>
                         </ul>
                     </div>
                     <div class="col-md-4">
-                        <h3 class="text-black-50">Projects</h3>
+                        <h3 class="text-white-50">Projects</h3>
                         <ul style="list-style-type: none;">
                             <li>Home</li>
                             <li>Admin</li>
@@ -215,7 +215,7 @@
                     </div>
                 </div>
                 <hr class="m-0" />
-                <p class="text-center m-0">StarUp</p>
+                <p class="text-center m-0 text-white-50">StarUp</p>
             </div>
         </div>
     </div>

@@ -20774,7 +20774,7 @@ dl li {
         background: #ffffffd9;
     }
 
-    .sidebar .nav:not(.sub-menu) > .nav-item.active .nav.item:hover {
+    .sidebar .nav:not(.sub-menu) > .nav-item.active  {
         background: #ffffffd9;
         border-radius: 0.437rem;
     }
@@ -20787,9 +20787,7 @@ dl li {
     background: #ffffffb3;
     padding-bottom: 12px;
 }
-    .sidebar .nav.sub-menu:hover {
-        background: #ffffff57;
-    }
+  
 
 .sidebar .nav.sub-menu .nav-item {
   padding: 0;

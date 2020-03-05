@@ -11,8 +11,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Badass.Core.Areas.Admin.Controllers
 {
-    [Area("Admin")]
-    public class PostsController : Controller
+    public class PostsController : BaseController
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _context;
