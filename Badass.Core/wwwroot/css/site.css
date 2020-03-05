@@ -262,26 +262,29 @@ fieldset {
 :-ms-input-placeholder {
     color: #888;
 }
-.xbox {
+.parallax {
     margin-bottom: 70px;
     width: 100%;
     height: 500px;
-    background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/46992/diver2.jpg') no-repeat center center/cover;
+    background: url('https://images.hdqwalls.com/download/sunset-tree-red-ocean-sky-7w-2048x1152.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-    .xbox .content {
+    .parallax .content {
         background-color: #171717;
         height: 100%;
         -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0));
         -webkit-mask-repeat: no-repeat;
         -webkit-mask-position: left top, left bottom;
         width: 100%;
-        
         padding: 160px 0 0 60px;
         color: white;
     }
 
-    .xbox p, .carbon p {
+    .parallax p, .carbon p {
         width: 40%;
         margin: 10px 0 20px;
     }
@@ -290,13 +293,12 @@ fieldset {
     #contact {
         padding:50px 25px;
     }
-        .xbox .content {
+    .parallax .content {
         font-size: 1.5rem;
         padding: 172px 0 0 30px;
     }
 
-    .xbox p, .carbon p {
+    .parallax p, .carbon p {
         width: 95%;
-      
     }
 }
