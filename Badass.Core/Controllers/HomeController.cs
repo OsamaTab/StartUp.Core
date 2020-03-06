@@ -29,7 +29,7 @@ namespace Badass.Core.Controllers
             var viewModel = new HomeViewModel
             {
                 ContactUs = new ContactUs(),
-                Posts = await posts.Take(3).ToListAsync()
+                Posts = await posts.Take(2).ToListAsync()
             };
             return View(viewModel);
         }

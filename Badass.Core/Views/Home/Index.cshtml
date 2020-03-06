@@ -4,10 +4,10 @@
     ViewData["Title"] = "Home Page";
 }
 @section Link{
-    <link rel="stylesheet" href="~/css/card.css" />
+    <link href="~/css/main.css" rel="stylesheet" />
 }
 
-<div class="animation-area" >
+<div class="animation-area">
     <div class="typewriter text-center">
         <h1>Start Up The Perfect Site</h1>
     </div>
@@ -21,53 +21,192 @@
     </ul>
 </div>
 
-<h2 class="text-center pt-5 text-white" >Latest News</h2>
-<div class="row-card row">
-    @foreach (var item in Model.Posts)
-    {
-        <div class="col-md-4 example-2 card1">
-            <div class="wrapper">
-                <div class="header">
-                    <div class="date">
-                        @*<span class="day">12</span>
-                            <span class="month">Aug</span>
-                            <span class="year">2016</span>*@
-                        @Html.DisplayFor(modelItem => item.CreatedDate)
-                    </div>
-                    <ul class="menu-content">
-                        <li>
-                            <a href="#" class="fa fa-bookmark-o"></a>
-                        </li>
-                        <li><a href="#" class="fa fa-heart-o"><span>18</span></a></li>
-                        <li><a href="#" class="fa fa-comment-o"><span>3</span></a></li>
-                    </ul>
-                </div>
-                <div class="data">
-                    <div class="content">
-                        <span class="Catagore">@Html.DisplayFor(modelItem => item.PostType.Title)</span>
-                        <h3 class="title"><a asp-controller="Posts" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a></h3>
-                        <p class="text">@Html.DisplayFor(modelItem => item.Body)</p>
-                        <a asp-controller="Posts" asp-action="Details" asp-route-id="@item.Id" class="button">Read more</a>
-                    </div>
+<section class="services-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 mt-5 pt-3">
+                <div class="section-title">
+                    <span>Our Services</span>
+                    <h2>Best Services Save The World</h2>
                 </div>
             </div>
         </div>
-    }
-</div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="service-item">
+                    <img src="img/services/service-1.png" alt="">
+                    <h4>Modern Design</h4>
+                    <p>Brook embraces a modern look with various enhanced pre-defined page elements.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="service-item">
+                    <img src="img/services/service-2.png" alt="">
+                    <h4>Content</h4>
+                    <p>Brook embraces a modern look with various enhanced pre-defined page elements.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="service-item">
+                    <img src="img/services/service-3.png" alt="">
+                    <h4>Make Up</h4>
+                    <p>Brook embraces a modern look with various enhanced pre-defined page elements.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <section class="parallax">
     <div class="content my-auto">
-        <h2>Xbox Game Pass Ultimate</h2>
+        <h2 class="text-white">Pass Ultimate</h2>
         <p>
-            Xbox Game Pass Ultimate XboxGold Live  and over 100 high-quality
+            Pass Ultimate Gold Live  and over 100 high-quality
             console and PC games. Play together with friends and discover your
             next favorite game.
         </p>
-        <button  class="btn btn-dark">
+        <button class="btn btn-dark">
             Join Now <i class="fas fa-chevron-right"></i>
         </button>
     </div>
 </section>
+<section class="portfolio-section spad ">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <span>Our Portfolio</span>
+                    <h2>Turn Your Dream Into Reality</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="portfolio-item set-bg large-item" data-setbg="~/images/faces/face15.jpg" style="background-image: url(&quot;/images/faces/face15.jpg&quot;);">
+                    <div class="pi-hover">
+                        <a href="#" class="chain-icon"><i class="fa fa-chain"></i></a>
+                        <a href="~/images/faces/face15.jpg" class="search-icon image-popup"><i class="fa fa-search"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="portfolio-item set-bg mx-1" data-setbg="~/images/faces/face16.jpg" style="background-image: url(&quot;/images/faces/face11.jpg&quot;);">
+                    <div class="pi-hover">
+                        <a href="#" class="chain-icon"><i class="fa fa-chain"></i></a>
+                        <a href="~/images/faces/face16.jpg" class="search-icon image-popup"><i class="fa fa-search"></i></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="portfolio-item set-bg" data-setbg="~/images/faces/face17.jpg" style="background-image: url(&quot;/images/faces/face16.jpg&quot;);">
+                            <div class="pi-hover">
+                                <a href="#" class="chain-icon"><i class="fa fa-chain"></i></a>
+                                <a href="~/images/faces/face17.jpg" class="search-icon image-popup"><i class="fa fa-search"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="portfolio-item set-bg" data-setbg="img/portfolio/portfolio-4.jpg" style="background-image: url(&quot;/images/faces/face17.jpg&quot;);">
+                            <div class="pi-hover">
+                                <a href="#" class="chain-icon"><i class="fa fa-chain"></i></a>
+                                <a href="img/portfolio/portfolio-4.jpg" class="search-icon image-popup"><i class="fa fa-search"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="counter-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="counter-text">
+                    <div class="section-title">
+                        <span>Number Speaks</span>
+                        <h2>We have a lot of <br>experience</h2>
+                    </div>
+                    <a href="#" class="primary-btn">Read More</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="counter-item">
+                    <div class="ci-number count">2034</div>
+                    <div class="ci-text">
+                        <h4>Successful projects</h4>
+                        <p>
+                            Since its establishment in 2005, Fashion has been focusing on project management &amp;
+                            implementation through cooperation.
+                        </p>
+                    </div>
+                </div>
+                <div class="counter-item">
+                    <div class="ci-number count">1054</div>
+                    <div class="ci-text">
+                        <h4>Events</h4>
+                        <p>
+                            Since its establishment in 2005, Fashion has been focusing on project management &amp;
+                            implementation through cooperation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="blog-section latest-blog spad mb-5 py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <span>Latest Posts</span>
+                    <h2>From Our Posts Page</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in Model.Posts)
+            {
+                <div class="col-md-6">
+                    <div class="blog-item">
+                        <div class="row">
+                            <div class="col-lg-6 p-0">
+                                <a asp-controller="Posts" asp-action="Details" asp-route-id="@item.Id">
+                                    <div class="bi-pic set-bg" data-setbg="img/blog/blog-1.jpg" style="background-image: url(&quot;https://tvseriescritic.files.wordpress.com/2016/10/stranger-things-bicycle-lights-children.jpg&quot;);">
+
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="bi-text">
+                                    <ul>
+                                        <li ><i class="fa fa-commenting-o"></i> @Html.DisplayFor(modelItem => item.PostType.Title)</li>
+                                        <hr />
+                                        <li><i class="fa fa-calendar-o"></i> @Html.DisplayFor(modelItem => item.CreatedDate)</li>
+                                    </ul>
+                                    <h4><a asp-controller="Posts" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a></h4>
+                                    <p style="overflow:hidden ;height:70px">@Html.DisplayFor(modelItem => item.Body)</p>
+                                    <div class="bt-author">
+                                        <div class="ba-pic">
+                                            <img src="img/blog/author-1.jpg" alt="">
+                                        </div>
+                                        <div class="ba-text">
+                                            <h5>Jeff Rodriguez</h5>
+                                            <span>Designer</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+    </div>
+</div>
+    </div>
 
 <div class="">
     <form id="contact" asp-controller="Home" asp-action="Index" method="post">
@@ -93,6 +232,7 @@
 
 </div>
 
-@section Scripts{ 
-    
+
+@section Scripts{
+
 }
