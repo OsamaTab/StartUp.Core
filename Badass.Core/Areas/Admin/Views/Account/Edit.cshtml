@@ -13,7 +13,7 @@
                 <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input type="hidden" asp-for="UserId" />
-                    <input type="hidden" asp-for="RoleId" />
+                  
                     <div class="form-group">
                         <label asp-for="UserName" class="control-label"></label>
                         <input asp-for="UserName" class="form-control" />
@@ -21,7 +21,7 @@
                     </div>
                     <div class="form-group m-0">
                         <label for="roleId" class="control-label">Roles </label>
-                        <select id="roleId" name="roleId" class="form-control" asp-items="ViewBag.RoleId">
+                        <select asp-for="RoleId" class="form-control" asp-items="ViewBag.RoleId">
                             <option value="" selected>Select PostType</option>
                         </select>
                     </div>

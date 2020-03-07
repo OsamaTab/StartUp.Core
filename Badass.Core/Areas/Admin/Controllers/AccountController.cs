@@ -53,6 +53,7 @@ namespace Badass.Core.Areas.Admin.Controllers
             return View(model);
         }
         [HttpGet]
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> Edit(string? id)
         {
             ViewData["RoleId"] = new SelectList(_context.Roles, "Id", "Name");
@@ -72,34 +73,32 @@ namespace Badass.Core.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string userId,UserViewModel users ,string roleId)
+        [Authorize(Roles = "SuperAdmin")]
+        public async Task<IActionResult> Edit(string userId,UserViewModel model)
         {
 
             if (ModelState.IsValid)
             {
                 var user = await _userManager.FindByIdAsync(userId);
-                var role = await _roleManager.FindByIdAsync(users.RoleId);
-                
-                user.Email = users.UserName;
-                role.Name = users.RoleName;
-                await _userManager.AddToRoleAsync(user, role.Name);
-                 
+                var role = await _roleManager.FindByIdAsync(model.RoleId);
+                user.Email = model.UserName;
                 IdentityResult result = await _userManager.UpdateAsync(user);
-
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("index", "roles");
+                    await _userManager.AddToRoleAsync(user, role.Name);
+                    return RedirectToAction("index", "account");
                 }
                 foreach (IdentityError error in result.Errors)
                 {
                     ModelState.AddModelError("", error.Description);
                 }
             }
-            return View(users);
+            return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> Delete(string Id)
         {
 

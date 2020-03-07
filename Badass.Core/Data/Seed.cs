@@ -16,7 +16,7 @@ namespace Badass.Core.Data
             //adding customs roles
             var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var UserManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-            string[] roleNames = { "Admin", "SuperAdmin", "Member" };
+            string[] roleNames = {"Member" ,"Admin", "SuperAdmin" };
             IdentityResult roleResult;
             foreach (var roleName in roleNames)
             {

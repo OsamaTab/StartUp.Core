@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using Badass.Core.Areas.Admin.ViewModels;
 using Badass.Core.Data;
 using Badass.Core.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Badass.Core.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "SuperAdmin")]
     public class RolesController : BaseController
     {
         private readonly ApplicationDbContext _context;
@@ -63,6 +65,7 @@ namespace Badass.Core.Areas.Admin.Controllers
             return View(roleViewModel);
         }
         [HttpGet]
+       
         public async Task<IActionResult> Edit(string? id)
         {
             if (id == null)
