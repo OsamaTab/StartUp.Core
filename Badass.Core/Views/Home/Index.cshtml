@@ -170,12 +170,14 @@
         <div class="row">
             @foreach (var item in Model.Posts)
             {
+                var photoPath = "/images/" + (item.PhotoPath ?? "stranger.jpg");
+
                 <div class="col-md-6">
                     <div class="blog-item">
                         <div class="row">
                             <div class="col-lg-6 p-0">
                                 <a asp-controller="Posts" asp-action="Details" asp-route-id="@item.Id">
-                                    <div class="bi-pic set-bg" data-setbg="img/blog/blog-1.jpg" style="background-image: url(&quot;https://tvseriescritic.files.wordpress.com/2016/10/stranger-things-bicycle-lights-children.jpg&quot;);">
+                                    <div class="bi-pic set-bg" data-setbg="@photoPath" style="background-image: url(&quot;@photoPath&quot;);" asp-append-version="true">
 
                                     </div>
                                 </a>

@@ -10,6 +10,5 @@ namespace Badass.Core.ViewModels
     {
         public IEnumerable<Post>  Posts{ get; set; }
         public ContactUs ContactUs { get; set; }
-        public string MyMessage { get; set; }
     }
 }

@@ -18,6 +18,7 @@ namespace Badass.Core.Models
         public PostType PostType { get; set; }
         public string Title { get; set; }
         public string Body { get; set; }
+        public string PhotoPath { get; set; }
         [ForeignKey("CreatedByUserId")]
         public ApplicationUser CreatedBy { get; set; }
         public string? CreatedByUserId { get; set; }

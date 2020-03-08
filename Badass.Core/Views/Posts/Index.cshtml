@@ -8,38 +8,56 @@
     <link rel="stylesheet" href="~/css/card.css" />
 }
 
-<div class="block">
+<div class="block ">
 
 </div>
 
 <div class="row-card row">
-    @foreach(var item in Model) { 
-    <div class="col-md-4 example-2 card1">
-        <div class="wrapper">
-            <div class="header">
-                <div class="date">
-                    @*<span class="day">12</span>
-                    <span class="month">Aug</span>
-                    <span class="year">2016</span>*@
-                    @Html.DisplayFor(modelItem => item.CreatedDate)
+    @foreach (var item in Model)
+    {
+        var photoPath = "/images/" + (item.PhotoPath ?? "stranger.jpg");
+        <div class="col-md-4 example-2 card1">
+            <div class="wrapper" style="background:url(@photoPath) center/cover no-repeat" asp-append-version="true">
+                <div class="header">
+                    <div class="date">
+                        @*<span class="day">12</span>
+                            <span class="month">Aug</span>
+                            <span class="year">2016</span>*@
+                        @Html.DisplayFor(modelItem => item.CreatedDate)
+                    </div>
+                    <ul class="menu-content">
+                        <li>
+                            <a href="#" class="fa fa-bookmark-o"></a>
+                        </li>
+                        <li><a href="#" class="fa fa-heart-o"><span>18</span></a></li>
+                        <li><a href="#" class="fa fa-comment-o"><span>3</span></a></li>
+                    </ul>
                 </div>
-                <ul class="menu-content">
-                    <li>
-                        <a href="#" class="fa fa-bookmark-o"></a>
-                    </li>
-                    <li><a href="#" class="fa fa-heart-o"><span>18</span></a></li>
-                    <li><a href="#" class="fa fa-comment-o"><span>3</span></a></li>
-                </ul>
-            </div>
-            <div class="data">
-                <div class="content">
-                    <span class="Catagore">@Html.DisplayFor(modelItem => item.PostType.Title)</span>
-                    <h3 class="title"><a asp-controller="Posts" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a></h3>
-                    <p class="text">@Html.DisplayFor(modelItem => item.Body)</p>
-                    <a asp-controller="Posts" asp-action="Details" asp-route-id="@item.Id" class="button">Read more</a>
+                <div class="data">
+                    <div class="content">
+                        <span class="Catagore">@Html.DisplayFor(modelItem => item.PostType.Title)</span>
+                        <h3 class="title"><a asp-controller="Posts" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a></h3>
+                        <p class="text">@Html.DisplayFor(modelItem => item.Body)</p>
+                        <a asp-controller="Posts" asp-action="Details" asp-route-id="@item.Id" class="button">Read more</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-}
+    }
+</div>
+<nav aria-label="Page navigation example ">
+    <ul class="pagination justify-content-center">
+        <li class="page-item disabled" >
+            <a class="page-link" href="#" tabindex="-1">Previous</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+        </li>
+    </ul>
+</nav>
+<div class="my-5 py-4">
+
 </div>

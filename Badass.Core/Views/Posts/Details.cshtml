@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Details";
+    var photoPath = "~/images/" + (Model.PhotoPath ?? "diver2.jpg");
 }
 @section Link{
     <style>
@@ -90,7 +91,7 @@ html, body {
 }
 
 <figure class="intro" style="height:65vh">
-    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/46992/diver2.jpg" alt="" style="height:65vh" />
+    <img src="@photoPath" alt="" style="height:65vh" asp-append-version="true" />
     <figcaption class="caption text-white-50">
         <h2>
             @Html.DisplayFor(model => model.Title)
