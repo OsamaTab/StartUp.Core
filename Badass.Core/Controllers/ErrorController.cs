@@ -19,7 +19,7 @@ namespace Badass.Core.Controllers
                 default:
                     break;
             }
-            return View("Error");
+            return View("ErrorHandler");
         }
     }
 }

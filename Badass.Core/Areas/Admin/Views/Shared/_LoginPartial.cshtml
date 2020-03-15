@@ -1,29 +1,32 @@
 ﻿
-
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
-    <ul class="navbar-nav">
-        @if (SignInManager.IsSignedIn(User))
-        {
-            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                <img src="~/images/faces/face28.jpg" alt="profile" />
+
+
+@{var photoPath = "~/images/profile/" + (null ?? "diver2.jpg"); }
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+            <img src="@photoPath" alt="" asp-append-version="true" />
+        </a>
+        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+            <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index">
+                <i class="ti-settings text-primary"></i>
+                Profile
             </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index">
-                    <i class="ti-settings text-primary"></i>
-                    Profile
-                </a>
-                
-                <form class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                        <i class="ti-power-off text-primary"></i>
-                        <button type="submit" class="btn btn-link btn-sm p-0">Logout</button>
-                    </form>
-            </div>
-          
-        }
-        else
-        {
-            
-        }
-    </ul>
+
+            <form class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <i class="ti-power-off text-primary"></i>
+                <button type="submit" class="btn btn-link btn-sm p-0">Logout</button>
+            </form>
+        </div>
+
+    }
+    else
+    {
+
+    }
+</ul>
