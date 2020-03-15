@@ -2,9 +2,12 @@
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
 
 
-@{var photoPath = "~/images/profile/" + (null ?? "diver2.jpg"); }
+@{var photoPath = "~/images/profile/" + (user.PhotoPath ?? "diver2.jpg"); }
 
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))

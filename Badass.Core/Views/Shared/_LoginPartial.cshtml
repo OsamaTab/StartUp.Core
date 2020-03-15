@@ -1,10 +1,12 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
 
 
-
-@{var photoPath = "~/images/profile/" + (null  ?? "diver2.jpg"); }
+@{var photoPath = "~/images/profile/" + (user.PhotoPath ?? "diver2.jpg"); }
 <style>
     .bttt {
         background: none !important;
@@ -46,8 +48,8 @@
         <a class="nav-link dropdown-toggle pt-1" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <img style="width: 40px;
                     height: 40px;
-                    border-radius: 100%;" 
-                    src="@photoPath" alt="" asp-append-version="true" />
+                    border-radius: 100%;"
+                 src="@photoPath" alt="" asp-append-version="true" />
         </a>
         <!-- Dropdown - User Information -->
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
