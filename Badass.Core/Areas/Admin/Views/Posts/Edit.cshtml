@@ -1,7 +1,8 @@
-﻿@model Badass.Core.Models.Post
-
+﻿@model Badass.Core.Areas.Admin.ViewModels.PostFileViewModel
 @{
     ViewData["Title"] = "Edit";
+    var photoPath = "~/images/" + (Model.PhotoPath ?? "diver2.jpg");
+
 }
 @section Link{
     <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
@@ -14,9 +15,12 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-12">
-                <form asp-action="Edit">
+                <form enctype="multipart/form-data" asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input type="hidden" asp-for="Id" />
+                    <label class="control-label">Post Cover</label>
+                    <img src="@photoPath" alt="" asp-append-version="true" class="w-100 mb-3" />
+
                     <div class="form-group">
                         <label asp-for="PostTypeId" class="control-label"></label>
                         <select asp-for="PostTypeId" class="form-control" asp-items="ViewBag.PostTypeId"></select>
@@ -38,8 +42,17 @@
                         <input asp-for="Status" class="form-control" />
                         <span asp-validation-for="Status" class="text-danger"></span>
                     </div>
+
+                    <label asp-for="Photo" class="control-label"></label>
+                    <div class="custom-file mb-4">
+                        <input asp-for="Photo" class="custom-file-input" />
+                        <label asp-for="Photo" class="custom-file-label">Chose A File....</label>
+                    </div>
+
                     <input type="hidden" asp-for="CreatedByUserId" />
                     <input type="hidden" asp-for="CreatedDate" />
+                    <input type="hidden" asp-for="PhotoPath" />
+
                     <div class="form-group">
                         <input type="submit" value="Save" class="btn btn-primary" />
                     </div>
@@ -56,11 +69,17 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-<script type="text/javascript">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".custom-file-input").on("change", function () {
+                var FileName = $(this).val().split('\\').pop();
+                $(this).next('.custom-file-label').html(FileName);
+            });
+        });
 
-    CKEDITOR.replace('editor1', {
-        height: 250
-    });
+        CKEDITOR.replace('editor1', {
+            height: 250
+        });
 
-</script>
+    </script>
 }

@@ -80,14 +80,9 @@ namespace Badass.Core.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var post = new Post();
-                string uniqueFileName = null;
-                if (postModel.Photo!=null)
-                {
-                    string upladeFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images");
-                    uniqueFileName = Guid.NewGuid().ToString() + '_' + postModel.Photo.FileName;
-                    string filePath=Path.Combine(upladeFolder, uniqueFileName);
-                    postModel.Photo.CopyToAsync(new FileStream(filePath, FileMode.Create));
-                }
+
+                string uniqueFileName = FileName(postModel);
+
                 var user = await _userManager.GetUserAsync(User);
                 post.CreatedByUserId = user.Id;
                 post.Title = postModel.Title;
@@ -103,6 +98,23 @@ namespace Badass.Core.Areas.Admin.Controllers
             return View(postModel);
         }
 
+        private string FileName(PostFileViewModel postModel)
+        {
+            string uniqueFileName = null;
+            if (postModel.Photo != null)
+            {
+                string upladeFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images");
+                uniqueFileName = Guid.NewGuid().ToString() + '_' + postModel.Photo.FileName;
+                string filePath = Path.Combine(upladeFolder, uniqueFileName);
+                using(var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    postModel.Photo.CopyTo(fileStream);
+                }
+            }
+
+            return uniqueFileName;
+        }
+
         // GET: Admin/Posts/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -113,13 +125,27 @@ namespace Badass.Core.Areas.Admin.Controllers
             
             var post = await _context.Posts.FindAsync(id);
 
+            PostFileViewModel postView = new PostFileViewModel
+            {
+                Id = post.Id,
+                Body=post.Body,
+                CreatedBy=post.CreatedBy,
+                PostTypeId=post.PostTypeId,
+                Title=post.Title,
+                Status=post.Status,
+                PhotoPath=post.PhotoPath,
+                CreatedByUserId=post.CreatedByUserId,
+                CreatedDate=post.CreatedDate
+            };
+            
+
             if (post == null)
             {
                 return NotFound();
             }
             ViewData["PostTypeId"] = new SelectList(_context.PostTypes, "Id", "Title", post.PostTypeId);
   
-            return View(post);
+            return View(postView);
         }
 
         // POST: Admin/Posts/Edit/5
@@ -127,7 +153,7 @@ namespace Badass.Core.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,PostTypeId,Title,Body,Status, CreatedDate, CreatedByUserId")] Post post)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,PostTypeId,Title,Body,Status, CreatedDate, CreatedByUserId , Photo ,PhotoPath")] PostFileViewModel post)
         {
             if (id != post.Id)
             {
@@ -138,9 +164,20 @@ namespace Badass.Core.Areas.Admin.Controllers
             {
                 try
                 {
+                    string uniqueFileName=null;
+                    if (post.Photo != null)
+                    {
+                        if (post.PhotoPath != null)
+                        {
+                            string filePath = Path.Combine(_hostingEnvironment.WebRootPath, "images" , post.PhotoPath);
+                            System.IO.File.Delete(filePath); 
+                        }
+                        uniqueFileName = FileName(post);
+                    }
                     var user = await _userManager.GetUserAsync(User);
                     post.UpdatedByUserId = user.Id;
                     post.UpdatedDate = DateTime.Now;
+                    post.PhotoPath = uniqueFileName;
                     _context.Update(post);
                     await _context.SaveChangesAsync();
                 }
@@ -157,9 +194,6 @@ namespace Badass.Core.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CreatedByUserId"] = new SelectList(_context.Users, "Id", "Id", post.CreatedByUserId);
-            ViewData["PostTypeId"] = new SelectList(_context.PostTypes, "Id", "Id", post.PostTypeId);
-            ViewData["UpdatedByUserId"] = new SelectList(_context.Users, "Id", "Id", post.UpdatedByUserId);
             return View(post);
         }
 
