@@ -16,6 +16,7 @@ namespace Badass.Core.Data
         }
         public DbSet<PostType> PostTypes { get; set; }
         public DbSet<Post> Posts { get; set; }
+        public DbSet<Comment> Comments { get; set; }
         public DbSet<Menu> Menus { get; set; }
         public DbSet<MenuItem> MenuItems { get; set; }
         public DbSet<Currency> Currencies { get; set; }
