@@ -46,7 +46,7 @@ namespace Badass.Core.Controllers
 
             if (ModelState.IsValid)
             {
-                string uniceName = null;
+                string uniceName = model.PhotoPath;
                 var user = await _userManager.GetUserAsync(HttpContext.User);
                 if (model.Photo != null)
                 {
@@ -57,7 +57,7 @@ namespace Badass.Core.Controllers
                     }
                     uniceName = FileName(model);
                 }
-
+                user.UserName = model.Email;
                 user.Email = model.Email;
                 user.PhoneNumber = model.PhoneNumber;
                 user.PhotoPath = uniceName;

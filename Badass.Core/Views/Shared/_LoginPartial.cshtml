@@ -4,78 +4,77 @@
 @{
     var user = await UserManager.GetUserAsync(User);
 }
-
-
-@{var photoPath = "~/images/profile/" + (user.PhotoPath ?? "diver2.jpg"); }
-<style>
-    .bttt {
-        background: none !important;
-        border: none;
-        cursor: pointer;
-        text-decoration: none;
-        line-height: 40px;
-        padding: 0 15px;
-        margin-right: 40px;
-        color: white;
-    }
-
-        .bttt:hover {
-            color: #00E676;
+    <style>
+        .bttt {
+            background: none !important;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            line-height: 40px;
+            padding: 0 15px;
+            margin-right: 40px;
+            color: white;
         }
 
-    button:focus {
-        outline: 0 auto -webkit-focus-ring-color;
-    }
+            .bttt:hover {
+                color: #00E676;
+            }
 
-    .dropdown-menu.dropdown-menu-right.shadow.animated--grow-in.show {
-        border-radius: 10px;
-        background-color: #171717;
-    }
+        button:focus {
+            outline: 0 auto -webkit-focus-ring-color;
+        }
 
-    .dropdown-item:focus, .dropdown-item:hover {
-        color: #00E676;
-        text-decoration: none;
-        background-color: #171717;
-    }
+        .dropdown-menu.dropdown-menu-right.shadow.animated--grow-in.show {
+            border-radius: 10px;
+            background-color: #171717;
+        }
 
-    .dropdown-toggle::after {
-        content: none;
-    }
-</style>
-@if (SignInManager.IsSignedIn(User))
-{
-    <li class="nav-item dropdown no-arrow">
-        <a class="nav-link dropdown-toggle pt-1" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img style="width: 40px;
-                    height: 40px;
-                    border-radius: 100%;"
-                 src="@photoPath" alt="" asp-append-version="true" />
-        </a>
-        <!-- Dropdown - User Information -->
-        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-            <a class="dropdown-item bttt" asp-controller="Account" asp-action="profile">
-                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                Profile
+        .dropdown-item:focus, .dropdown-item:hover {
+            color: #00E676;
+            text-decoration: none;
+            background-color: #171717;
+        }
+
+        .dropdown-toggle::after {
+            content: none;
+        }
+    </style>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        var photoPath = "~/images/profile/" + (user.PhotoPath ?? "diver2.jpg");
+
+        <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle pt-1" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img style="width: 40px;
+                    height: 30px;
+                    border-radius: 30%;"
+                     src="@photoPath" alt="" asp-append-version="true" />
             </a>
-            <a class="dropdown-item bttt" href="#">
-                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                Settings
-            </a>
+            <!-- Dropdown - User Information -->
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item bttt" asp-controller="Account" asp-action="profile">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Profile
+                </a>
+                <a class="dropdown-item bttt" href="#">
+                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Settings
+                </a>
 
-            <form class="dropdown-item pt-0 pl-0" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                <button type="submit" class="bttt">Logout</button>
-            </form>
-        </div>
-    </li>
-}
-else
-{
-    @*<li class="nav-item">
-            <a class="nav-link " asp-area="Identity" asp-page="/Account/Register">Register</a>
-        </li>*@
-    <li class="nav-item">
-        <a class="nav-link " asp-area="Identity" asp-page="/Account/Login">Login</a>
-    </li>
-}
+                <form class="dropdown-item pt-0 pl-0" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                    <button type="submit" class="bttt">Logout</button>
+                </form>
+            </div>
+        </li>
+    }
+    else
+    {
+        @*<li class="nav-item">
+                <a class="nav-link " asp-area="Identity" asp-page="/Account/Register">Register</a>
+            </li>*@
+        <li class="nav-item">
+            <a class="nav-link " asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </li>
+    }
 
