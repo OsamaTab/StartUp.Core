@@ -19,12 +19,16 @@ namespace Badass.Core.Areas.Admin.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IHostingEnvironment _hostingEnvironment;
         private readonly ApplicationDbContext _context;
+        private readonly IPostRepository _ipostRepository;
 
-        public PostsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager,IHostingEnvironment hostingEnvironment)
+
+
+        public PostsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager,IHostingEnvironment hostingEnvironment,IPostRepository postRepository)
         {
             _context = context;
             _userManager = userManager;
             _hostingEnvironment = hostingEnvironment;
+            _ipostRepository = postRepository;
         }
 
         // GET: Admin/Posts
@@ -35,8 +39,9 @@ namespace Badass.Core.Areas.Admin.Controllers
             
             if (filterPostId != null)
             {
-                var postss = _context.Posts.Include(x => x.PostType).Include(x => x.CreatedBy).Include(x => x.UpdatedBy).Where(x => x.PostTypeId == filterPostId);
-                return View(await postss.ToListAsync());
+                //var postss = _context.Posts.Include(x => x.PostType).Include(x => x.CreatedBy).Include(x => x.UpdatedBy).Where(x => x.PostTypeId == filterPostId);
+                var postss = _ipostRepository.GetPost(filterPostId);
+                return View(postss);
             }
             var posts = _context.Posts.Include(x => x.PostType).Include(x => x.CreatedBy).Include(x => x.UpdatedBy);
             return View(await posts.ToListAsync());
